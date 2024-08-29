@@ -185,7 +185,7 @@
       </a>
 
       <nav id="navmenu" class="navmenu">
-        <ul>
+        <ul id="nav">
           <li><a href="/" class="active">Home<br></a></li>
           <li><a href="/consumer/dashboard" class="active">Search<br></a></li>
           <li><a href="/about" class="active">About<br></a></li>
@@ -401,15 +401,18 @@ document.getElementById('registerForm').addEventListener('submit', async functio
   }
 });
 document.addEventListener('DOMContentLoaded', function() {
-    const token = localStorage.getItem('authToken'); // Replace 'authToken' with the actual key you used to store the JWT.
-
+    const token = localStorage.getItem('authToken'); 
+    const role = localStorage.getItem("role")
+    
+    
     if (token) {
         // User is logged in
         console.log("User is logged in");
+        document.getElementById("nav").innerHTML = '    <li><a href="/donor/dashboard" class="active">Dashboard<br></a></li>'+ document.getElementById("nav").innerHTML
         document.querySelector('.btn-getstarted[data-bs-target="#loginModal"]').style.display = 'none';
         document.querySelector('.btn-getstarted[data-bs-target="#registerModal"]').style.display = 'none';
 
-  
+          
         const logoutButton = document.createElement('a');
         logoutButton.href = '#';
         logoutButton.className = 'btn-getstarted ms-3';
