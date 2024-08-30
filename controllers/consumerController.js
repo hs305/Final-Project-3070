@@ -18,11 +18,11 @@ exports.getNearbyPosts = async (req, res) => {
                     $centerSphere: [[longitude, latitude], radiusInMeters / 6378100]
                 }
             }
-        }).populate('donor', 'name'); // Populate the donor field with the name
+        }).populate('donor', 'name'); 
 
         res.json(foodPosts);
     } catch (err) {
-        console.error(err);
+     
         res.status(500).json({ error: 'Server error' });
     }
 };
